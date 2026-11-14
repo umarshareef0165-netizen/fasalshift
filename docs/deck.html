@@ -47,7 +47,7 @@
     <tr><td>NASA POWER Daily (T2M, PRECTOTCORR, WS2M)</td><td>Monsoon onset, GDD, heat days, live 14-day panel</td><td><strong>Live</strong> — no key</td></tr>
     <tr><td>NASA POWER Climatology (25-yr, 2001–2025)</td><td>“Hotter / drier than normal” baseline</td><td><strong>Live</strong> — no key</td></tr>
     <tr><td>GPM IMERG / SMAP</td><td>Finer rain, real soil moisture</td><td>Blocked — needs a free Earthdata login (not available during the sprint); POWER rain + Open-Meteo soil used instead, labelled</td></tr>
-    <tr><td>Landsat 8–9 / ECOSTRESS (CMR metadata)</td><td>Vegetation / heat-stress context</td><td>Metadata verified live (latest Faisalabad HLS granule Oct 4, 2026); file downloads need Earthdata login — not wired</td></tr>
+    <tr><td>Landsat 8–9 / ECOSTRESS (CMR metadata)</td><td>Vegetation / heat-stress context</td><td>Latest Faisalabad HLS granule Oct 29, 2026 (ECOSTRESS Oct 31, 2026) — shown live in-app on /sources via /api/nasa/cmr; file downloads need Earthdata login — not wired</td></tr>
     <tr><td>Open-Meteo archive (ERA5)</td><td>Soil moisture fallback only</td><td>Labelled “NOT SMAP” everywhere it appears</td></tr>
   </table>
   <p class="fine">Rule: every number is either live from an API or badged with its source and date. Fill values (−999) are never plotted or averaged; POWER lags ~2 days.</p>
@@ -57,6 +57,7 @@
   <p class="kicker">Slide 3 · The Shift — the hero number</p>
   <p class="hero">+2 <small>days</small></p>
   <h2 style="margin-top:10px;">Faisalabad’s monsoon onset moved 2 days later since 2004</h2>
+  <p>The shift is small — but the heat is not: grain-fill heat days 0 → 5, GDD +265. That is the warming signal inside the same 22 years.</p>
   <p>Onset rule (shown in the app): first day after June 1 with a 3-day rain total ≥ 7.5 mm. 2004 onset: <strong>June 16</strong>. Recent median (2023–2025): <strong>June 18</strong>.</p>
   <ul style="margin-top:14px;">
     <li>Trend 2004–2025: −0.54 days/year, <strong>p = 0.12 — not statistically significant</strong>. We report the median shift honestly, not a trend claim.</li>
@@ -71,19 +72,19 @@
   <h2>Wheat → Pulses wins for Faisalabad</h2>
   <table>
     <tr><th>Rotation</th><th>Water</th><th>Soil</th><th>Heat</th><th>Margin</th><th>Total /10</th></tr>
-    <tr class="winner"><td>Wheat → Pulses ★ Recommended</td><td>10.0</td><td>8.0</td><td>4.0</td><td>6.0</td><td>7.4</td></tr>
-    <tr><td>Wheat → Cotton</td><td>10.0</td><td>3.0</td><td>6.0</td><td>7.0</td><td>6.8</td></tr>
-    <tr><td>Wheat → Maize</td><td>10.0</td><td>4.0</td><td>3.0</td><td>8.0</td><td>6.5</td></tr>
+    <tr class="winner"><td>Wheat → Pulses ★ Recommended</td><td>9.4</td><td>8.0</td><td>4.0</td><td>6.0</td><td>7.2</td></tr>
+    <tr><td>Wheat → Cotton</td><td>8.2</td><td>3.0</td><td>6.0</td><td>7.0</td><td>6.2</td></tr>
+    <tr><td>Wheat → Maize</td><td>8.6</td><td>4.0</td><td>3.0</td><td>8.0</td><td>6.0</td></tr>
   </table>
   <p>Weights shown in the app: water 35% · soil 25% · heat 25% · margin 15%. Pulses win on water + soil (they fix nitrogen); cotton wins on heat tolerance but drains soil and water; maize wins on margin but loses on heat.</p>
-  <p class="fine">Inputs (live): 2025 monsoon rain 5.02 mm/day vs 2.37 climatology = 2.12× (wet year); heat pressure capped at 2.0× because the 2004 baseline grain fill had 0 heat days (verified: max 27.89 °C). Wheat baseline yield 3.12 t/ha is a verified model; rotation yields are labelled relative rules, never model predictions.</p>
+  <p class="fine">Inputs (live): 2025 monsoon rain 5.02 mm/day vs 2.37 climatology = 2.12× (wet year). Water scores use a 1.0× scoring cap (labelled rule): surplus rain above climatology cannot differentiate crops, so the wet year scores as 1.0× — the displayed 2.12× is the true ratio. Heat pressure capped at 2.0× because the 2004 baseline grain fill had 0 heat days (verified: max 27.89 °C). Wheat baseline yield 3.12 t/ha is a verified model; rotation yields are labelled relative rules, never model predictions.</p>
 </section>
 
 <section class="slide">
   <p class="kicker">Slide 5 · Adaptation Margin — the stress test</p>
   <p class="hero">2 <small>days</small></p>
   <h2 style="margin-top:10px;">In Faisalabad, every rotation still works if planting slips 2 days — then the heat breaks it</h2>
-  <p>We push planting later, one day at a time, over the real 2024-25 daily series and ask: does the crop still get enough growing-degree days, water, and a survivable grain fill? Faisalabad survives <strong>2 days</strong> of slip on all three rotations; Multan survives <strong>8 days</strong>; Layyah <strong>3 days</strong>.</p>
+  <p>We push planting later, one day at a time, over the real 2024-25 daily series and ask: does the crop still get enough growing-degree days, water, and a survivable grain fill? Faisalabad survives <strong>2 days</strong> of slip on all three rotations; Multan survives <strong>8 days</strong>; Layyah <strong>3 days</strong>; Lahore <strong>2 days</strong>. (All-district margins verified from the live cache + scoring engine, Nov 14.)</p>
   <p style="margin-top:14px;">That is the number a farmer plans around: not a forecast, but the last safe planting day under the weather that already happened.</p>
 </section>
 
@@ -91,7 +92,7 @@
   <p class="kicker">Slide 6 · Validity + limits (what we do not claim)</p>
   <h2>Honest about what is live and what is not</h2>
   <ul>
-    <li><strong>Live:</strong> NASA POWER daily + climatology (verified HTTP 200, Nov 14); rotation scores and margins computed from that data in the app; 31/31 unit tests passing.</li>
+    <li><strong>Live:</strong> NASA POWER daily + climatology (verified HTTP 200, Nov 14); rotation scores and margins computed from that data in the app; 42/42 unit tests passing.</li>
     <li><strong>Not significant:</strong> the 22-year onset trend (p = 0.12) — reported, not claimed.</li>
     <li><strong>Fallbacks, labelled:</strong> soil moisture is Open-Meteo/ERA5, not SMAP; monsoon water uses POWER rain, not IMERG.</li>
     <li><strong>Not built:</strong> Landsat/ECOSTRESS processing pipeline (metadata only); no ML rotation model — transparent rules instead.</li>
@@ -105,7 +106,7 @@
   <h2>FasalShift — built on NASA open data</h2>
   <p><strong>Team:</strong> Umar Shareef (lead, full-stack + AI) · Naveed Ahmad (teammate) — Universal Event, Global Judging eligible.</p>
   <p style="margin-top:14px;"><strong>Live app:</strong> <a class="gold" href="https://fasalshift.vercel.app/">https://fasalshift.vercel.app/</a><br>
-  <strong>Open-source repo:</strong> <span style="color:#1b4332;">Repo: push pending — link in the Space Apps submission form</span><br>
+  <strong>Open-source repo:</strong> <a class="gold" href="https://github.com/umarshareef0165-netizen/fasalshift">https://github.com/umarshareef0165-netizen/fasalshift</a><br>
   <strong>Data sources:</strong> in-app /sources page + SOURCES.md (every dataset cited).</p>
   <p style="margin-top:14px;">Stack: Next.js 14 + TypeScript, deterministic engine (no LLM), Urdu-first UI with voice summary. Every number on every slide is live from NASA POWER or a labelled rule — nothing invented.</p>
   <p class="fine">Challenge 7: Field Shift — Adapting Farms with NASA Data · NASA Space Apps Challenge 2026</p>
