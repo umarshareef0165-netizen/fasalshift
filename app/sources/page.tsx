@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import SatelliteContext from '@/components/SatelliteContext';
 
 export const metadata: Metadata = {
   title: 'Sources & method — FasalShift',
@@ -55,7 +56,7 @@ const SOURCES: Source[] = [
     name: 'ECOSTRESS L2T LSTE',
     what: 'Land surface temperature (70 m) — water and heat stress.',
     url: 'https://cmr.earthdata.nasa.gov/search/granules.json?short_name=ECO_L2T_LSTE',
-    note: 'Granule search verified public, no auth — 3 granules over Faisalabad, Oct 2026. File download needs a free Earthdata account. Pre-computed layer only, badged with source and date.',
+    note: 'Granule search verified public, no auth — latest granule over Faisalabad Oct 31, 2026 (live latest shown in Satellite context above). File download needs a free Earthdata account. Pre-computed layer only, badged with source and date.',
     nasa: true,
   },
   {
@@ -119,6 +120,10 @@ export default function SourcesPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="section">
+          <SatelliteContext />
         </section>
 
         <section className="section">
