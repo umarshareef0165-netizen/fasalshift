@@ -2,6 +2,14 @@
 
 **Updated:** Sat Nov 14, 2026, ~09:35 PT (sprint build DONE — deploy + push pending)
 
+## ✅ WIN PUSH COMPLETE (Nov 14, ~10:47 PT)
+
+- **Strategy:** `docs/WIN-STRATEGY.md` — 5 criteria (no published 2026 weights; equal-weight assumption), honest standing 18/25, Validity weakest (3/5). Best lane: Best Use of Data.
+- **Design audit:** `docs/DESIGN-AUDIT.md` — worst failure gold #e9c46a on white 1.67:1 (winner border/focus). All P0 (7) + P1 (13) + cheap P2 fixed, commit `31f257d`.
+- **Features:** commit `b54b2ea` — M3 water cap 1.0× (scores now **Pulses 7.2 / Cotton 6.2 / Maize 6.0**, winner unchanged); M4 full n=22 onsets regenerated for all 4 districts (Lahore +12, Multan −5, Layyah −4 KEPT; Multan trend −1.76 days/yr, p = 0.004 — significant); M6 hero reframe (heat 0→5 / GDD +265 lead); N1 live CMR satellite context (HLS latest Nov 5, 2026; ECOSTRESS latest Nov 11, 2026); N2 all-district margins on deck slide 5; N4 adoption channel sentence; M5 draft completed (AI disclosure, full sources, limits verbatim).
+- **Tests: 42/42 passing** (was 31/31); `tsc` clean; `next build` clean.
+- **Redeploy:** DONE ✅ Nov 14 ~10:49 PT — deployment dpl_KGuY822cogUjNx1Yb1QcEoWbapP2 READY; live URL https://fasalshift.vercel.app/ re-verified with curl: homepage 200 (answer strip, Live NASA POWER badge, ✓ Selected, hero +2 days, p = 0.124 not significant, honest limits line, heat 0 → 5), /sources 200, /api/nasa/power live NASA POWER data, /api/nasa/cmr live (HLS latest 2026-11-05, ECOSTRESS latest 2026-11-11). Deployment Protection OFF (public, anonymous 200). Note: rotation scores + hero winner render client-side after the live monsoon fetch resolves (~1 s); SSR shows honest "not yet computed" / "Checking live monsoon data…" loading states — final logged-out browser click-through still to be done by parent before submitting.
+
 ## ✅ SPRINT BUILD COMPLETE (Nov 14, ~09:35 PT)
 
 - **Tests: 31/31 passing** (13 shift + 18 rotation); `tsc` clean; `next build` clean; local commit `7b3b1ba`.
