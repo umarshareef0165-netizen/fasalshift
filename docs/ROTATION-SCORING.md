@@ -64,7 +64,19 @@ Skip `-999` days in every sum/count; if >10% of a season is missing, show
 WATER (uses PRECTOTCORR + climatology):
   water_need = { Cotton: 9, Pulses: 3, Maize: 7 }        # relative, labelled rule
   water_available = mean(PRECTOTCORR, Jun–Sep recent) / mean(PRECTOTCORR, Jun–Sep climatology)
-  water_score = clamp(10 - water_need * (1.2 - water_available), 0, 10)
+  # WATER-AVAILABILITY CAP (added Nov 14, 2026 — WIN-STRATEGY M3, labelled rule,
+  # same precedent as the 2.0x heat-pressure cap below): the SCORING input is
+  # capped at 1.0 — water_available_for_scoring = min(water_available, 1.0).
+  # Surplus rain above climatology is surplus: in a wet year (Faisalabad 2025:
+  # 2.12x) the uncapped formula scored every rotation Water 10.0, so the
+  # dimension stopped discriminating and the winner was decided by rules, not
+  # data. With the cap, Faisalabad scores Water 9.4 / 8.2 / 8.6 (Pulses /
+  # Cotton / Maize) and totals 7.2 / 6.2 / 6.0 — winner unchanged (Pulses).
+  # The DISPLAYED ratio is NOT capped (the app shows the true 2.12x); only
+  # the scoring input is capped. The cap is provably a no-op inside the
+  # Adaptation Margin water check (1.0 x 10 = 10 >= every need 9/3/7), so
+  # margins are unchanged by it — covered by test.
+  water_score = clamp(10 - water_need * (1.2 - water_available_for_scoring), 0, 10)
   # drier-than-normal monsoon punishes thirsty crops; pulses barely care
 
 SOIL (transparent rules, labelled):
