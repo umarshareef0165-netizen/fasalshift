@@ -218,6 +218,23 @@ alone — never ship neither).**
   trend — Faisalabad is the verified district."* Honesty here *gains* validity
   points; a thin +12 *loses* them.
 - *Data:* live POWER only. Do not fill the gap with any other source.
+- **M4 outcome (Nov 14, ~10:45 PT — DONE, generation gap confirmed):** it was
+  the cache script, not the data. `scripts/fetch-cache.mjs` only fetched
+  2004 + 2023/24/25 for Lahore/Multan/Layyah. Regenerated the full 2004–2025
+  onset series for all three from live NASA POWER
+  (`scripts/regen-onsets.mjs`, one daily-point call per district for the
+  whole range, 7,792 days each) and rebuilt `data/districts.json` (Faisalabad
+  left untouched). **All four districts now n = 22** — onsets trigger every
+  year under the 3-day ≥ 7.5 mm rule. **Median shifts UNCHANGED: Lahore +12,
+  Multan −5, Layyah −4 — deck slide 3 line KEPT as written.** New n = 22
+  trends: Lahore −0.17 days/yr, p = 0.62 (not significant); Multan −1.76
+  days/yr, p = 0.004 — **statistically significant** (onset earlier);
+  Layyah −0.58 days/yr, p = 0.07 (not significant). Consequence: the app's
+  "Honest limits" line in `components/Planner.tsx` now shows significance
+  per district instead of always saying "not significant" (Multan correctly
+  shows p < 0.01, statistically significant); `ShiftCard.tsx` already gated
+  the warning on p < 0.05. The Multan finding is recorded in
+  `docs/SUBMISSION-DRAFT.md` Results; the deck does not claim it.
 
 **M5. Fill the submission form completely and honestly — including the fields
 teams forget.**
